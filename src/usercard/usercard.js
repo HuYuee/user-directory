@@ -70,7 +70,6 @@ class UserCard extends Component{
     if(gender !== nextGender){
         obj.gender = nextGender;
     }
-    debugger;
     if(obj){
       this.setState(obj)
     }
@@ -85,7 +84,6 @@ class UserCard extends Component{
     axios.get('https://randomuser.me/api',{responseEncoding: 'utf8'})
     .then(function (response) {
       let data = response.data.results;
-      debugger;
       if(response.status === 200 && data && data.length > 0){
         this_.props.random(this_.props.index,data[0]);
       }

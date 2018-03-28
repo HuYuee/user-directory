@@ -15,7 +15,7 @@ describe('Enzyme Shallow', () => {
 
 describe('Enzyme Render', () => {
   it('UserDirec should have one userContent class', () => {
-    const app = shallow(<UserDirec />)
+    const app = shallow(<UserDirec />);
     expect(app.find('.userContent').length).to.equal(1)
   })
 });

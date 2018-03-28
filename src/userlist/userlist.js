@@ -97,7 +97,6 @@ class UserDirec extends Component{
             {
             (userList&&userList.length)?userList.map((item)=>{
               if(item){
-                debugger;
                 return <UserCard index={item.time} user={item.user} edit_flag={item.edit_flag} key={item.time} operateUser={this.operateUser} random={this.randomUser}/>
               }else{
                     return '';
