@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Form,Card,Button,Input,Radio} from 'antd';
+import { Form, Card, Button, Input, Radio } from 'antd';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import BasicFormItem from './BasicFormItem';
 import './usercard.css';
 
 const RadioGroup = Radio.Group;
@@ -17,74 +18,63 @@ const propTypes = {
 const defaultProps = {
     index: 0,
     user: {
-      name:{
+      name: {
         first:'',
         last:''
       },
       gender:''
     },
     edit_flag: 'Edit',
-    operateUser: ()=>'',
-    random: ()=>''
+    operateUser: () => '',
+    random: () => ''
 };
-let BasicFormItem = (props)=>{
-    return (
-        <FormItem
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 8 }}
-        label={props.name}
-        >
-        {props.edit_flag === 'Edit'?props.children:props.value}
-        </FormItem>
-    )
-}
 //user card component
-class UserCard extends Component{
-  constructor(props){
+class UserCard extends Component {
+  constructor(props) {
     super(props);
-    let prop = this.props,
-        {edit_flag,user} = prop,
-        {name,gender} = user,
-        {first,last} = name;
-    this.state ={
+    const prop = this.props,
+        { edit_flag, user } = prop,
+        { name, gender } = user,
+        { first, last } = name;
+    this.state = {
       edit_flag:edit_flag,
       first:first,
       last:last,
       gender:gender
     }
   }
-  componentWillReceiveProps(nextProps){
-    let obj = {},
-        user = this.props.user,
-        nextUser = nextProps.user,
-        {name,gender} = user,
-        {first,last} = name,
-        {name:nextName,gender:nextGender} = nextUser,
-        {first:nextFirst,last:nextLast} = nextName;
-    if(first !== nextFirst){
+  componentWillReceiveProps(nextProps) {
+    let obj = {};
+    const user = this.props.user,
+      nextUser = nextProps.user,
+      { name, gender } = user,
+      { first, last } = name,
+      { name : nextName, gender : nextGender } = nextUser,
+      { first : nextFirst, last : nextLast } = nextName;
+    if (first !== nextFirst) {
         obj.first = nextFirst;
     }
-    if(last !== nextLast){
+    if (last !== nextLast) {
         obj.last = nextLast;
     }
-    if(gender !== nextGender){
+    if (gender !== nextGender) {
         obj.gender = nextGender;
     }
-    if(obj){
+    if (obj) {
       this.setState(obj)
     }
-    if(this.props.edit_flag !== nextProps.edit_flag){
+    if (this.props.edit_flag !== nextProps.edit_flag) {
       this.setState({
         edit_flag:nextProps.edit_flag
       })
     }
   }
   Random=()=>{
-    let this_ = this;
-    axios.get('https://randomuser.me/api',{responseEncoding: 'utf8'})
+    const this_ = this;
+    axios.get('https://randomuser.me/api', {responseEncoding: 'utf8'})
     .then(function (response) {
-      let data = response.data.results;
-      if(response.status === 200 && data && data.length > 0){
+      const data = response.data.results;
+      if (response.status === 200 && data && data.length > 0) {
         this_.props.random(this_.props.index,data[0]);
       }
     })
@@ -92,34 +82,34 @@ class UserCard extends Component{
       console.log(error);
     });
   }
-  firstChange=(e)=>{
+  firstChange = (e) => {
     this.setState({
       first:e.target.value
     })
   }
-  lastChange=(e)=>{
+  lastChange = (e) => {
     this.setState({
       last:e.target.value
     })
   }
-  radioChange=(e)=>{
+  radioChange = (e) => {
     this.setState({
       gender:e.target.value
     })
     
   }
-  editClick=()=>{
+  editClick = () => {
     this.props.operateUser(this.props.index,'edit');
   }
-  saveClick=()=>{
+  saveClick = () => {
     this.props.operateUser(this.props.index,'save');
   }
-  cancelClick=()=>{
+  cancelClick = () => {
     this.props.operateUser(this.props.index,'del')
   }
   render(){
-    let state = this.state;
-    let {
+    const state = this.state;
+    const {
       edit_flag,
       first,
       last,

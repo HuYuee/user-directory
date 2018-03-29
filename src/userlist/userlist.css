@@ -1,28 +1,29 @@
-.split{
-    margin-right:5px;
-  }
-  .userContent{
-    position:relative;
-  }
-  .userContent>.title{
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 70px;
-      padding: 20px 30px;
-      width: 100%;
-      background: #011529;
-      z-index: 1;
-  }
-  .title>h1{
-    font-size:20px;
-    color:white;
-  }
-  .title>button{
-    position:absolute;
-    right:50px;
-    top:20px;
-  }
-  .userContent>.userCardContent{
-    margin-top:65px;
-  }
+.userContent {
+  position: relative;
+}
+
+.userContent>.userContent__title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  padding: 20px 30px;
+  width: 100%;
+  background: #011529;
+  z-index: 1;
+}
+
+.userContent__title>h1 {
+  font-size: 20px;
+  color: white;
+}
+
+.userContent__title>button {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+}
+
+.userContent>.userContent__userCardContent {
+  margin-top: 65px;
+}
