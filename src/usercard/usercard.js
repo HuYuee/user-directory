@@ -69,7 +69,7 @@ class UserCard extends Component {
       })
     }
   }
-  Random=()=>{
+  Random = () => {
     const this_ = this;
     axios.get('https://randomuser.me/api', {responseEncoding: 'utf8'})
     .then(function (response) {
@@ -116,7 +116,7 @@ class UserCard extends Component {
       gender
     } = state;
     return (
-      <Card style={{marginTop:"24px"}}>
+      <Card style={{ marginTop:"24px" }}>
       <Form>
         <BasicFormItem name="First" value={first} edit_flag={edit_flag}>
           <Input value={first} onChange={this.firstChange} />
@@ -132,7 +132,7 @@ class UserCard extends Component {
         </BasicFormItem>
         {edit_flag === 'Edit'?
           <FormItem 
-            wrapperCol={{span:8,offset: 16}}
+            wrapperCol={{ span:8,offset: 16 }}
             >
           <Button className="split" type="primary" onClick={this.Random}>Random User</Button>
           <Button className="split" type="primary" onClick={this.saveClick}>Save</Button>
@@ -140,7 +140,7 @@ class UserCard extends Component {
         </FormItem>
           :
         <FormItem 
-          wrapperCol={{span:5,offset: 19}}
+          wrapperCol={{ span:5,offset: 19 }}
           >
           <Button className="split" type="primary" onClick={this.editClick}>Edit</Button>
           <Button className="split" type="primary" onClick={this.cancelClick}>Delete</Button>

@@ -85,7 +85,7 @@ class UserDirec extends Component {
       })
     }
     render() {
-      const {userList} = this.state;
+      const { userList } = this.state;
       return (
         <div className="userContent">
           <div className="userContent__title">
